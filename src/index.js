@@ -15,7 +15,7 @@ class App extends React.Component{
       videos: [],
       selectedVideo: null
     }
-    this.videoSearch('surfboards')
+    this.videoSearch('despacito')
   }
 
   videoSearch(term){
@@ -31,11 +31,13 @@ class App extends React.Component{
     return(
       <div>
         <SearchBar onSearchTermChange={term => this.videoSearch(term)}/>
-        <VideoDetail video={this.state.selectedVideo}/>
-        <VideoList
-          onVideoSelect={selectedVideo => this.setState({selectedVideo})}
-          videos={this.state.videos}
-        />
+        <div className="main-wrap">
+          <VideoDetail video={this.state.selectedVideo}/>
+          <VideoList
+            onVideoSelect={selectedVideo => this.setState({selectedVideo})}
+            videos={this.state.videos}
+          />
+        </div>
       </div>
     )
   }
