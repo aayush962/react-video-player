@@ -15,7 +15,12 @@ class SearchBar extends React.Component{
           <h4>React Video Player</h4>
         </div>
         <div className="input-group col-md-4">
-          <input onChange={this.onInputChange.bind(this)} value={this.state.term} type="text" className="form-control" placeholder="Search for..." />
+          <input
+            onChange={event => this.onInputChange(event.target.value)}
+            value={this.state.term} type="text"
+            className="form-control"
+            placeholder="Search for..."
+          />
           <span className="input-group-btn">
             <button className="btn btn-secondary" type="button">Go!</button>
           </span>
@@ -24,10 +29,9 @@ class SearchBar extends React.Component{
     )
   }
 
-  onInputChange(e){
-    this.setState({
-      term: e.target.value
-    })
+  onInputChange(term){
+    this.setState({term})
+    this.props.onSearchTermChange(term)
   }
 }
 
